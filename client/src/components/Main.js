@@ -9,7 +9,8 @@ export default class Main extends React.Component {
 			email:"",
 			gender:"female",
 			phone:"",
-			dob:""
+			dob:"",
+			error:false
 		}
 		this.handleUploadUser = this.handleUploadUser.bind(this);
 		this.handleName = this.handleName.bind(this);
@@ -62,21 +63,26 @@ export default class Main extends React.Component {
 		const gender = e.target.gender.value;
 		const phone = e.target.phone.value;
 		const date = e.target.date.value;
-		this.setState({name:'',email:'',phone:'',gender:'',dob:''});
-
-		fetch('/add_user', {
-		method: 'POST',
-		body: JSON.stringify({"name":name,email,gender,phone,date}),
-		headers: {"Content-Type": "application/json"}
-		}).then(response => {
-			if(response.status==200){
-				this.getAllUsers();
-			}
-		});
+		if(name && gender && phone && date && email){
+			this.setState({name:'',email:'',phone:'',gender:'',dob:'',error:false});
+			fetch('/add_user', {
+			method: 'POST',
+			body: JSON.stringify({"name":name,email,gender,phone,date}),
+			headers: {"Content-Type": "application/json"}
+			}).then(response => {
+				if(response.status==200){
+					this.getAllUsers();
+				}
+			});
+		}
+		else{
+			this.setState({name:'',email:'',phone:'',gender:'',dob:'',error:true});
+		}	
 	}
 	render(){
 		return(
 			<div>
+			{this.state.error ? <p>Please provide all the details</p>:""}
 			<h3>Add User</h3>
 			<form action="/add_user" method="post" onSubmit={this.handleUploadUser}>
 			   Name:&nbsp;
