@@ -1,0 +1,52 @@
+{
+  "name": "expensify",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Abhishek gupta",
+  "license": "MIT",
+  "scripts": {
+    "serve": "live-server public/",
+    "build:dev": "webpack",
+    "build:prod": "webpack -p --env production",
+    "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "dev-server": "webpack-dev-server",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "axios": "^0.18.0",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "css-loader": "^1.0.1",
+    "jest": "^23.6.0",
+    "live-server": "^1.2.0",
+    "mini-css-extract-plugin": "^0.4.4",
+    "moment": "^2.22.2",
+    "node-sass": "^4.10.0",
+    "normalize": "^0.3.1",
+    "normalize.css": "^8.0.1",
+    "react": "^16.6.0",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-dates": "^18.2.1",
+    "react-dom": "^16.6.0",
+    "react-modal": "^3.6.1",
+    "react-redux": "^5.1.0",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "uuid": "^3.3.2",
+    "validator": "^10.8.0",
+    "webpack": "^4.24.0"
+  },
+  "devDependencies": {
+    "babel-core": "7.0.0-bridge.0",
+    "regenerator-runtime": "^0.12.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
